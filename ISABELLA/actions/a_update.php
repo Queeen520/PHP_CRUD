@@ -4,7 +4,7 @@ require_once 'file_upload.php';
 
 if ($_POST) {    
     $name = $_POST['name'];
-    $price = $_POST['price'];
+    $visited = $_POST['visited'];
     $id = $_POST['id'];
     //variable for upload pictures errors is initialised
     $uploadError = '';
@@ -12,13 +12,13 @@ if ($_POST) {
     $picture = file_upload($_FILES['picture']);//file_upload() called  
     if($picture->error===0){
         ($_POST["picture"]=="product.png")?: unlink("../pictures/$_POST[picture]");           
-        $sql = "UPDATE products SET name = '$name', price = $price, picture = '$picture->fileName' WHERE id = {$id}";
+        $sql = "UPDATE secret_place SET name = '$name', visited = $visited, picture = '$picture->fileName' WHERE id = {$id}";
     }else{
-        $sql = "UPDATE products SET name = '$name', price = $price WHERE id = {$id}";
+        $sql = "UPDATE secret_place SET name = '$name', visited = $visited WHERE id = {$id}";
     }    
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";
-        $message = "The record was successfully updated";
+        $message = "The Secret Place was successfully updated";
         $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'';
     } else {
         $class = "danger";

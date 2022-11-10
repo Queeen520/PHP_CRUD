@@ -4,19 +4,19 @@ require_once 'file_upload.php';
 
 if ($_POST) {   
     $name = $_POST['name'];
-    $price = $_POST['price'];
+    $visited = $_POST['visited'];
     $uploadError = '';
     //this function exists in the service file upload.
     $picture = file_upload($_FILES['picture']);  
    
-    $sql = "INSERT INTO products (name, price, picture) VALUES ('$name', $price,'$picture->fileName')";
+    $sql = "INSERT INTO secret_place (name, visited, picture) VALUES ('$name', $visited,'$picture->fileName')";
 
     if (mysqli_query($connect, $sql) === true) {
         $class = "success";
         $message = "The entry below was successfully created <br>
             <table class='table w-50'><tr>
             <td> $name </td>
-            <td> $price </td>
+            <td> $visited </td>
             </tr></table><hr>";
         $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'';
     } else {

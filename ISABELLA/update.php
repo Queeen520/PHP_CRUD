@@ -3,12 +3,12 @@ require_once 'actions/db_connect.php';
 
 if ($_GET['id']) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM products WHERE id = {$id}";
+    $sql = "SELECT * FROM secret_place WHERE id = {$id}";
     $result = mysqli_query($connect, $sql);
     if (mysqli_num_rows($result) == 1) {
         $data = mysqli_fetch_assoc($result);
         $name = $data['name'];
-        $price = $data['price'];
+        $visited = $data['visited'];
         $picture = $data['picture'];
     } else {
         header("location: error.php");
@@ -22,7 +22,7 @@ if ($_GET['id']) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Edit Product</title>
+        <title>Edit Place</title>
         <?php require_once 'components/boot.php'?>
         <style type= "text/css">
             fieldset {
@@ -43,11 +43,11 @@ if ($_GET['id']) {
                 <table class="table">
                     <tr>
                         <th>Name</th>
-                        <td><input class="form-control" type="text"  name="name" placeholder ="Product Name" value="<?php echo $name ?>"  /></td>
+                        <td><input class="form-control" type="text"  name="name" placeholder ="Name" value="<?php echo $name ?>"  /></td>
                     </tr>
                     <tr>
-                        <th>Price</th>
-                        <td><input class="form-control" type= "number" name="price" step="any"  placeholder="Price" value ="<?php echo $price ?>" /></td>
+                        <th>Visited</th>
+                        <td><input class="form-control" type="date" name="visited" step="any"  placeholder="Visit Date" value ="<?php echo $price ?>" /></td>
                     </tr>
                     <tr>
                         <th>Picture</th>

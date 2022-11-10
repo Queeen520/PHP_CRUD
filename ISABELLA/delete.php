@@ -3,12 +3,12 @@ require_once 'actions/db_connect.php';
 
 if ($_GET['id']) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM products WHERE id = {$id}" ;
+    $sql = "SELECT * FROM secret_place WHERE id = {$id}" ;
     $result = mysqli_query($connect, $sql);
     $data = mysqli_fetch_assoc($result);
     if (mysqli_num_rows($result) == 1) {
         $name = $data['name'];
-        $price = $data['price'];
+        $visited = $data['visited'];
         $picture = $data['picture'];
     } else {
         header("location: error.php");
@@ -48,7 +48,7 @@ if ($_GET['id']) {
                 </tr>
             </table>
 
-            <h3 class="mb-4">Do you really want to delete this product?</h3>
+            <h3 class="mb-4">Do you really want to delete?</h3>
             <form action ="actions/a_delete.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $id ?>" />
                 <input type="hidden" name="picture" value="<?php echo $picture ?>" />

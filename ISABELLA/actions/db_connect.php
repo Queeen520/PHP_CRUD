@@ -3,7 +3,7 @@
 $localhost = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "crud_example";
+$dbname = "secret_places_collection";
 
 // create connection
 $connect = mysqli_connect($localhost, $username, $password, $dbname);
