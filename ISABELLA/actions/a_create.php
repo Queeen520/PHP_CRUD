@@ -4,12 +4,14 @@ require_once 'file_upload.php';
 
 if ($_POST) {   
     $name = $_POST['name'];
+    $country = $_POST['country'];
     $visited = $_POST['visited'];
+    $story = $_POST['story'];
     $uploadError = '';
     //this function exists in the service file upload.
     $picture = file_upload($_FILES['picture']);  
    
-    $sql = "INSERT INTO secret_place (name, visited, picture) VALUES ('$name', $visited,'$picture->fileName')";
+    $sql = "INSERT INTO secret_place (name, country, visited, story, picture) VALUES ('$name', '$country', '$visited', '$story', '$picture->fileName')";
 
     if (mysqli_query($connect, $sql) === true) {
         $class = "success";

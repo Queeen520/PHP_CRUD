@@ -44,7 +44,7 @@ mysqli_close($connect);
                 vertical-align: middle;
             }
             tr {
-                text-align: center;
+                text-align: left;
             }
         </style>
     </head>
